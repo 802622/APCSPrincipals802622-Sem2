@@ -12,17 +12,32 @@ function setup() {
   cnv.position((windowWidth-width)/2, 30);
   background(5, 5, 5);
   fill(200, 30, 150);
+
+  dropdown = createSelect(); 
+  dropdown.position(150,30); 
+
+  dropdown.option("Age"); 
+  dropdown.option("Height(in)"); 
+  dropdown.option("Weight(lbs)"); 
 }
 
 function lineMake(){
   let i = 1;
   for(;i<18;i++){
-    //let x = (testTable.get(i,1))
-    // console.log(testTable.getRows());
-    // console.log(testTable.getColumn());
-
-    console.log(10*testTable.get(i, 3));
-        line(20*i, 4*testTable.get(i, 3), 20*i, 800);
+    variable = dropdown.value();
+      line((20*i)+10, 4*testTable.get(i, variable), (20*i)+10, 800);
+  }
+  if(dropdown.value() == "Age"){
+    textSize(16);
+    text('20', 5, 250);
+  }
+  if(dropdown.value() == "Height(in)"){
+    textSize(16);
+    text('60', 5, 350);
+  }
+  if(dropdown.value() == "Weight(lbs)"){
+    textSize(16);
+    text('100', 3, 700);
   }
 }
 
