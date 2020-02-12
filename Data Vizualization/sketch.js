@@ -18,8 +18,11 @@ function lineMake(){
   let i = 1;
   for(;i<18;i++){
     //let x = (testTable.get(i,1))
-    console.log(i);
-        line(40*i, 100,40*i,10*testTable.get(i, "Age"));
+    // console.log(testTable.getRows());
+    // console.log(testTable.getColumn());
+
+    console.log(10*testTable.get(i, 3));
+        line(20*i, 4*testTable.get(i, 3), 20*i, 800);
   }
 }
 
