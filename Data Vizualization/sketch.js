@@ -10,7 +10,7 @@ function preload() {
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
-  background(244, 127, 129);
+  background(255, 255, 255);
   fill(244, 127, 129);
 
   dropdown = createSelect(); 
@@ -19,6 +19,7 @@ function setup() {
   dropdown.option("Age"); 
   dropdown.option("Height(in)"); 
   dropdown.option("Weight(lbs)"); 
+  dropdown.option("Weight and Age"); 
 }
 
 function lineMake(){
@@ -55,11 +56,29 @@ function lineMake(){
     textSize(48);
     text("Biostats", 250, 40);
   }
+  if(dropdown.value() == "Weight and Age"){
+
+  }
 }
 function draw() {
-  background(244,127,129);
+  background(255,255,255);
+  if(dropdown.value() != "Weight and Age"){
   lineMake()
-  //line(point[1].loc.x,point[1].loc.y,point[2].loc.x,point[2].loc.y)
+  } else {
+    let i = 1;
+    for(;i<18;i++){
+    line(4*testTable.get(i, "Age"), 800-4*testTable.get(i, "Weight"), 4*testTable.get(i, "Age")+10, 750);
+    line(4*testTable.get(i, "Age"), 800-4*testTable.get(i, "Weight"), 4*testTable.get(i, "Age")+10, 750);
+    line(4*testTable.get(i, "Age"), 800-4*testTable.get(i, "Weight"), 4*testTable.get(i, "Age")+10, 800-4*testTable.get(i, variable));
+
+    push();
+    textSize(12);
+    translate((40*i)+22,756);
+    rotate(PI/3);
+    text(testTable.get(i, "Name"), 0,0);
+    pop();
+    }
+  }
 }
 
 
